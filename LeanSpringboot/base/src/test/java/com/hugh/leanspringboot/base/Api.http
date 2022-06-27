@@ -1,0 +1,15 @@
+
+###
+GET http://localhost:8083/async/a1?id=hugh
+
+###
+GET http://localhost:8083/async/a2?id=hugh
+
+###
+GET http://localhost:8083/async/a3?flag=true
+
+
+
+
+###
+GET http://localhost:8083/tran/save?name=true

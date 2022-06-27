@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hugh.lenaspringboot.security.mapper.MenuMapper">
+
+    <resultMap id="BaseResultMap" type="com.hugh.lenaspringboot.security.entity.Menu">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="munu" column="munu" jdbcType="VARCHAR"/>
+            <result property="menuValue" column="menu_value" jdbcType="VARCHAR"/>
+            <result property="auth" column="auth" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,munu,menu_value,
+        auth
+    </sql>
+    <select id="findByUserId" resultType="com.hugh.lenaspringboot.security.entity.Menu">
+        select * from s_menu m
+        left join s_role_menu rm on m.id=rm.menu_id
+        left join s_user_role ur on rm.role_id=ur.role_id
+        where ur.user_id=#{userId}
+    </select>
+</mapper>

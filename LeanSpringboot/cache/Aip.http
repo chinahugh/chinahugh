@@ -1,0 +1,37 @@
+
+###
+GET http://localhost:8082/get0?key=7
+
+###
+GET http://localhost:8082/get?key=name0&value=hugh
+
+###
+GET http://localhost:8082/getmap?key=20
+
+###
+GET http://localhost:8082/put?key=name0&value=hugh2
+
+
+###
+GET http://localhost:8082/del?key=name20
+
+###
+GET http://localhost:8082/dy?key=redis.life&msg=asda胡国晖阿斯顿
+
+
+###
+POST http://localhost:8083/upload?key=redis.news&msg=asda胡国晖阿斯顿
+Content-Type: multipart/form-data; boundary=WebAppBoundary; charset=GBK
+Accept: application/json
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="0_0.png"
+
+< D:\0_0.png
+--WebAppBoundary--
+
+###
+
+
+###
+GET http://localhost:8083/async/a1

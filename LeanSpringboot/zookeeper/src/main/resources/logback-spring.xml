@@ -1,0 +1,57 @@
+<!--<?xml version="1.0" encoding="UTF-8" ?>-->
+<!--<configuration>-->
+<!--    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">-->
+<!--        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+<!--            &lt;!&ndash;格式化输出（配色）：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符&ndash;&gt;-->
+<!--            <pattern>%yellow(%d{yyyy-MM-dd HH:mm:ss}) %red([%thread]) %highlight(%-5level) %cyan(%logger{5}.%M:%line) : %magenta(%msg) %n-->
+<!--            </pattern>-->
+<!--            <charset>UTF-8</charset>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+<!--    &lt;!&ndash;根据日志级别分离日志，分别输出到不同的文件&ndash;&gt;-->
+<!--    <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--&lt;!&ndash;        <filter class="ch.qos.logback.classic.filter.LevelFilter">&ndash;&gt;-->
+<!--&lt;!&ndash;            <level>ERROR</level>&ndash;&gt;-->
+<!--&lt;!&ndash;            <onMatch>DENY</onMatch>&ndash;&gt;-->
+<!--&lt;!&ndash;            <onMismatch>ACCEPT</onMismatch>&ndash;&gt;-->
+<!--&lt;!&ndash;        </filter>&ndash;&gt;-->
+<!--        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+<!--            <pattern>-->
+<!--                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50}.%M:%line : %msg%n-->
+<!--            </pattern>-->
+<!--            <charset>UTF-8</charset>-->
+<!--        </encoder>-->
+<!--        &lt;!&ndash;滚动策略&ndash;&gt;-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            &lt;!&ndash;按时间保存日志 修改格式可以按小时、按天、月来保存&ndash;&gt;-->
+<!--            <fileNamePattern>log/%d{yyyy-MM-dd}.log</fileNamePattern>-->
+<!--            &lt;!&ndash;保存时长&ndash;&gt;-->
+<!--            <MaxHistory>90</MaxHistory>-->
+<!--            &lt;!&ndash;文件大小&ndash;&gt;-->
+<!--            <totalSizeCap>1GB</totalSizeCap>-->
+<!--        </rollingPolicy>-->
+<!--    </appender>-->
+
+<!--&lt;!&ndash;    <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">&ndash;&gt;-->
+<!--&lt;!&ndash;        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">&ndash;&gt;-->
+<!--&lt;!&ndash;            <level>ERROR</level>&ndash;&gt;-->
+<!--&lt;!&ndash;        </filter>&ndash;&gt;-->
+<!--&lt;!&ndash;        <encoder>&ndash;&gt;-->
+<!--&lt;!&ndash;            <pattern>&ndash;&gt;-->
+<!--&lt;!&ndash;                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50}.%M:%line : %msg%n&ndash;&gt;-->
+<!--&lt;!&ndash;            </pattern>&ndash;&gt;-->
+<!--&lt;!&ndash;        </encoder>&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash;滚动策略&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash;路径&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <fileNamePattern>log/error.%d{yyyy-MM-dd}.log</fileNamePattern>&ndash;&gt;-->
+<!--&lt;!&ndash;            <MaxHistory>90</MaxHistory>&ndash;&gt;-->
+<!--&lt;!&ndash;        </rollingPolicy>&ndash;&gt;-->
+<!--&lt;!&ndash;    </appender>&ndash;&gt;-->
+<!--    <root level="info">-->
+<!--        <appender-ref ref="consoleLog"/>-->
+<!--        <appender-ref ref="fileInfoLog"/>-->
+<!--&lt;!&ndash;        <appender-ref ref="fileErrorLog"/>&ndash;&gt;-->
+<!--    </root>-->
+<!--</configuration>-->

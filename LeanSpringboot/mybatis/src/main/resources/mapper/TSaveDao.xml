@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hugh.leanspringboot.mybatis.dao.TSaveDao">
+
+    <resultMap id="BaseResultMap" type="com.hugh.leanspringboot.mybatis.entity.TSave">
+        <!--@Table t_save-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="addressId" column="address_id" jdbcType="INTEGER"/>
+        <result property="gradeId" column="grade_id" jdbcType="INTEGER"/>
+        <result property="createdDate" column="created_date" jdbcType="OTHER"/>
+        <result property="lastModifiedDate" column="last_modified_date" jdbcType="OTHER"/>
+        <result property="createdById" column="created_by_id" jdbcType="INTEGER"/>
+        <result property="lastModifiedById" column="last_modified_by_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          id, name, address_id, grade_id, created_date, last_modified_date, created_by_id, last_modified_by_id
+        from test.t_save
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          id, name, address_id, grade_id, created_date, last_modified_date, created_by_id, last_modified_by_id
+        from test.t_save
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          id, name, address_id, grade_id, created_date, last_modified_date, created_by_id, last_modified_by_id
+        from test.t_save
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="addressId != null">
+                and address_id = #{addressId}
+            </if>
+            <if test="gradeId != null">
+                and grade_id = #{gradeId}
+            </if>
+            <if test="createdDate != null">
+                and created_date = #{createdDate}
+            </if>
+            <if test="lastModifiedDate != null">
+                and last_modified_date = #{lastModifiedDate}
+            </if>
+            <if test="createdById != null">
+                and created_by_id = #{createdById}
+            </if>
+            <if test="lastModifiedById != null">
+                and last_modified_by_id = #{lastModifiedById}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into test.t_save(name, address_id, grade_id, created_date, last_modified_date, created_by_id, last_modified_by_id)
+        values (#{name}, #{addressId}, #{gradeId}, #{createdDate}, #{lastModifiedDate}, #{createdById}, #{lastModifiedById})
+    </insert>
+    <insert id="saveBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into test.t_save(name)
+        value
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.name}
+            )
+
+        </foreach>
+
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update test.t_save
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="addressId != null">
+                address_id = #{addressId},
+            </if>
+            <if test="gradeId != null">
+                grade_id = #{gradeId},
+            </if>
+            <if test="createdDate != null">
+                created_date = #{createdDate},
+            </if>
+            <if test="lastModifiedDate != null">
+                last_modified_date = #{lastModifiedDate},
+            </if>
+            <if test="createdById != null">
+                created_by_id = #{createdById},
+            </if>
+            <if test="lastModifiedById != null">
+                last_modified_by_id = #{lastModifiedById},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from test.t_save where id = #{id}
+    </delete>
+
+</mapper>

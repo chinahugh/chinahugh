@@ -1,0 +1,33 @@
+package com.hugh.lenaspringboot.security.session;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class Log {
+    public static Logger log() {
+        return LoggerFactory.getLogger(findCaller().getClassName());
+    }
+
+    private static StackTraceElement findCaller() {
+        // 获取堆栈信息
+        StackTraceElement[] callStack = Thread.currentThread().getStackTrace();
+
+        // 最原始被调用的堆栈信息
+        StackTraceElement caller = null;
+
+        // 日志类名称
+
+        String logClassName = Log.class.getName();
+        // 循环遍历到日志类标识
+
+        int i = 0;
+        for (int len = callStack.length; i < len; i++) {
+            if (logClassName.equals(callStack[i].getClassName())) {
+                break;
+            }
+        }
+        //是的没有错,这是一个magic number！想知道为什么？开启你的堆栈，来寻找我的宝藏吧！by Luo
+        caller = callStack[i + 3];
+        return caller;
+    }
+}
